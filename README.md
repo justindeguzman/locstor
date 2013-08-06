@@ -70,7 +70,7 @@ Contents
 
 	Older browsers do not natively support HTML5 Local Storage. Locstor.js automatically checks if localStorage is compatible with your current browser. If it detects localStorage is incompatible, the library falls back to cookies. But don't worry, **even with older browsers, locstar.js works exactly the same.**	
 	
-	`Note: If you need IE < 8 support, you need to include Dougclas Crockford's` [json2.js](https://github.com/douglascrockford/JSON-js)
+	`Note: If you need IE < 8 support, you need to include Douglas Crockford's` [json2.js](https://github.com/douglascrockford/JSON-js)
 	
 	####*There's a lot more features than that. Check out the API to read about the rest of them!*
 
