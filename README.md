@@ -1,5 +1,5 @@
-[locstor.js](locstorjs.com) - A localStorage Helper Library
-===========================================================
+##[locstor.js](locstorjs.com) - A localStorage Helper Library
+-----------------------------------------------------------
 Contents
 --------
 1. [Why locstor.js?](#why-locstor)
