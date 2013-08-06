@@ -80,17 +80,17 @@ Contents
 	<script src = 'locstor.min.js'></script>
 ###Public Methods
 + [**clear**()](#method-clear)
-+ [**contains**(_string key_)](#method-contains)
-+ [**get**(_string key_)](#method-get)
++ [**contains**(string key)](#method-contains)
++ [**get**(string key)](#method-get)
 + [**getKeys**()](#method-getkeys)
 + [**getRemainingSpace**()](#method-getspace)
 + [**getSize**()](#method-getsize)
 + [**isEmpty**()](#method-isempty)
-+ [**remove**(_string key_)](#method-remove)
-+ [**remove**(_array[]_)](#method-remove-array)
-+ [**set**(_string key, type value_)](#method-set)
-+ [**set**(_object o_)](#method-set-alias)
-+ [**store**(_object o_)](#method-store)
++ [**remove**(string key)](#method-remove)
++ [**remove**(array[])](#method-remove-array)
++ [**set**(string key, type value)](#method-set)
++ [**set**(object o)](#method-set-alias)
++ [**store**(object o)](#method-store)
 + [**toObject**()](#method-toobject)
 
 **<a id = 'method-clear'></a><u>clear()</u>**  
