@@ -1,7 +1,7 @@
 /**
  * Locstor.js is a JavaScript helper library for HTML5 localStorage.
  *
- * v1.0.1
+ * v1.0.2
  *
  * http://locstorjs.com
  *
@@ -63,16 +63,6 @@ var checkSupport = function checkSupport() {
 	}
 }();
 
-// Checks if the specified string can be parsed to JSON
-var isJSON = function isJSON(string) {
-	try {
-		JSON.parse(string);
-		return true;
-	} catch(e) {
-		return false;
-	}
-};
-
 // IE detection method courtesy of James Padolsey
 // http://james.padolsey.com/javascript/detect-ie-in-js-using-conditional-comments
 var ie = (function(){
@@ -118,10 +108,13 @@ Locstor.get = function get(key) {
 		return value === 'true';	//value was of type boolean
 	} else if(value === 'null') {
 		return null;	// value was null
-	} else if(isJSON(value)) {
-		return JSON.parse(value);	// value was of type object or array
 	} else {
-		return value;	// value was of type string
+		try {
+			value = JSON.parse(value);
+			return value;
+		} catch(e) {
+			return value;
+		}
 	}
 };
 

@@ -1,2 +1,6 @@
+v1.0.2
+-Refactored get() method
+-Removed isJSON() method
+
 v1.0.1
 -Added initial check to see if localStorage is enabled
