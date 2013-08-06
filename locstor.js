@@ -1,7 +1,7 @@
 /**
  * Locstor.js is a JavaScript helper library for HTML5 localStorage.
  *
- * v1.0.2
+ * v1.0.3
  *
  * http://locstorjs.com
  *
@@ -99,7 +99,7 @@ Locstor.get = function get(key) {
 		throw 'Key must be a string for function get(key)';
 	}
 
-	var value = localStorage[key];	// retrieve value
+	var value = localStorage.getItem(key);	// retrieve value
 	var number = parseFloat(value);	// to allow for number checking
 
 	if(!isNaN(number)) {
@@ -179,7 +179,7 @@ Locstor.set = function set(key, value) {
 			value = JSON.stringify(value);
 		}
 
-		localStorage[key] = value;
+		localStorage.setItem(key, value);
 	} else {
 		throw 'Invalid arguments for function set(key, value) or function set(object)';
 	}
@@ -189,7 +189,7 @@ Locstor.set = function set(key, value) {
 Locstor.store = function store(value) {
 	if(typeof value == 'object' && !(value instanceof Array)) {
 		for(var property in value) {
-			localStorage[property] = value[property];
+			localStorage.setItem(property, value[property]);
 		}
 	} else {
 		throw 'Argument for function set(object) must be an object';
