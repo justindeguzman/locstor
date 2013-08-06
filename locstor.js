@@ -1,7 +1,7 @@
 /**
  * Locstor.js is a JavaScript helper library for HTML5 localStorage.
  *
- * v1.0.0
+ * v1.0.1
  *
  * http://locstorjs.com
  *
@@ -12,6 +12,56 @@
 function Locstor() {}
 // Private Methods
 // ---------------
+
+// Inital check to see if localStorage is supported in the browser
+var checkSupport = function checkSupport() {
+	var supported = false;
+
+	// Derived from Modernizer (http://github.com/Modernizr/Modernizr)
+	try {
+		localStorage.setItem('test', 'test');
+		localStorage.removeItem('test');
+		supported = true;
+	} catch(e) {
+		return false;
+	}
+
+	// Implements localStorage if not supported
+	// From https://developer.mozilla.org/en-US/docs/Web/Guide/DOM/Storage?redirectlocale=en-US&redirectslug=DOM%2FStorage
+	if(!supported) {
+		window.localStorage = {
+			getItem: function (sKey) {
+				if (!sKey || !this.hasOwnProperty(sKey)) { return null; }
+				return unescape(document.cookie.replace(new RegExp("(?:^|.*;\\s*)" + escape(sKey).replace(/[\-\.\+\*]/g, "\\$&") +
+					"\\s*\\=\\s*((?:[^;](?!;))*[^;]?).*"), "$1"));
+			},
+
+			key: function (nKeyId) {
+				return unescape(document.cookie.replace(/\s*\=(?:.(?!;))*$/, "").split(/\s*\=(?:[^;](?!;))*[^;]?;\s*/)[nKeyId]);
+			},
+
+			setItem: function (sKey, sValue) {
+				if(!sKey) { return; }
+				document.cookie = escape(sKey) + "=" + escape(sValue) + "; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/";
+				this.length = document.cookie.match(/\=/g).length;
+			},
+
+			length: 0,
+
+			removeItem: function (sKey) {
+				if (!sKey || !this.hasOwnProperty(sKey)) { return; }
+				document.cookie = escape(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+				this.length--;
+			},
+
+			hasOwnProperty: function (sKey) {
+				return (new RegExp("(?:^|;\\s*)" + escape(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+			}
+		};
+
+		window.localStorage.length = (document.cookie.match(/\=/g) || window.localStorage).length;
+	}
+}();
 
 // Checks if the specified string can be parsed to JSON
 var isJSON = function isJSON(string) {
