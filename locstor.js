@@ -1,7 +1,7 @@
 /**
  * Locstor.js is a JavaScript helper library for HTML5 localStorage.
  *
- * v1.0.3
+ * v1.0.4
  *
  * http://locstorjs.com
  *
@@ -14,7 +14,7 @@ function Locstor() {}
 // ---------------
 
 // Inital check to see if localStorage is supported in the browser
-var checkSupport = function checkSupport() {
+(function() {
 	var supported = false;
 
 	// Derived from Modernizer (http://github.com/Modernizr/Modernizr)
@@ -23,7 +23,7 @@ var checkSupport = function checkSupport() {
 		localStorage.removeItem('test');
 		supported = true;
 	} catch(e) {
-		return false;
+		supported = false;
 	}
 
 	// Implements localStorage if not supported
@@ -61,19 +61,7 @@ var checkSupport = function checkSupport() {
 
 		window.localStorage.length = (document.cookie.match(/\=/g) || window.localStorage).length;
 	}
-}();
-
-// IE detection method courtesy of James Padolsey
-// http://james.padolsey.com/javascript/detect-ie-in-js-using-conditional-comments
-var ie = (function(){
-	var undef, v = 3, div = document.createElement('div');
-	while (
-		div.innerHTML = '<!--[if gt IE '+(++v)+']><i></i>< ![endif]-->',
-		div.getElementsByTagName('i')[0]
-	);
-
-	return v > 4 ? v : undef;
-}());
+})();
 
 // Public Methods
 // --------------
@@ -86,7 +74,7 @@ Locstor.clear = function clear() {
 // Checks if localStorage contains the specified key
 Locstor.contains = function contains(key) {
 	if(typeof key != 'string') {
-		throw 'Key must be a string for function contains(key)';
+		throw new Error('Key must be a string for function contains(key)');
 	}
 
 	return this.getKeys().indexOf(key) !== -1;
@@ -96,7 +84,7 @@ Locstor.contains = function contains(key) {
 // The value is converted to the proper type upon retrieval 
 Locstor.get = function get(key) {
 	if(typeof key != 'string') {
-		throw 'Key must be a string for function get(key)';
+		throw new Error('Key must be a string for function get(key)');
 	}
 
 	var value = localStorage.getItem(key);	// retrieve value
@@ -137,7 +125,19 @@ Locstor.getKeys = function getKeys() {
 Locstor.getRemainingSpace = function getRemainingSpace() {
 	var defaultSize = 5242880;
 
-	var result = ie > 7 ? localStorage.remainingSpace : defaultSize - this.getSize();
+	// IE detection method courtesy of James Padolsey
+	// http://james.padolsey.com/javascript/detect-ie-in-js-using-conditional-comments
+	var ie = (function(){
+		var undef, v = 3, div = document.createElement('div');
+		while (
+			div.innerHTML = '<!--[if gt IE '+(++v)+']><i></i>< ![endif]-->',
+			div.getElementsByTagName('i')[0]
+		);
+
+		return v > 4 ? v : undef;
+	}());
+
+	var result = ie && ie > 7 ? localStorage.remainingSpace : defaultSize - this.getSize();
 	return result;
 };
 
@@ -161,11 +161,11 @@ Locstor.remove = function remove(key) {
 			if(typeof key[i] == 'string') {
 				localStorage.removeItem(key[i]);
 			} else {
-				throw 'Key in index ' + i + ' is not a string';
+				throw new Error('Key in index ' + i + ' is not a string');
 			}
 		}
 	} else {
-		throw 'Key must be a string or array for function remove(key || array)';
+		throw new Error('Key must be a string or array for function remove(key || array)');
 	}
 };
 
@@ -181,7 +181,7 @@ Locstor.set = function set(key, value) {
 
 		localStorage.setItem(key, value);
 	} else {
-		throw 'Invalid arguments for function set(key, value) or function set(object)';
+		throw new Error('Invalid arguments for function set(key, value) or function set(object)');
 	}
 };
 
@@ -192,7 +192,7 @@ Locstor.store = function store(value) {
 			localStorage.setItem(property, value[property]);
 		}
 	} else {
-		throw 'Argument for function set(object) must be an object';
+		throw new Error('Argument for function set(object) must be an object');
 	}
 };
 

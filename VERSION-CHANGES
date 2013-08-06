@@ -1,3 +1,9 @@
+v1.0.4
+-Moved var ie inside getRemainingSpace() method
+-Combined files VERSION and CHANGELOG
+-Placed initial support check inside a closure
+-Replaced throw 'string' with throw new Error('message')
+
 v1.0.3
 -Replaced localStorage[key] = value with localStorage.setItem(key, value)
 

@@ -72,7 +72,7 @@ Contents
 	
 	`Note: If you need IE < 8 support, you need to include Douglas Crockford's` [json2.js](https://github.com/douglascrockford/JSON-js)
 	
-	####*There's a lot more features than that. Check out the API to read about the rest of them!*
+	####*There's a lot more features than that. Check out the API to read about the rest!*
 
 <a id = 'API'></a>API
 -----------------------------------------
@@ -247,7 +247,7 @@ If you found bugs or ways to improve the source code, or extended the library fo
 				|_	qunit.css
 					qunit.js
 	TODO.md	(to be done)
-	VERSION	(bump when locstor.js file is changed)
+	VERSION-CHANGES
 
 <a id = 'q-and-a'></a>Questions / Comments
 ------------------------------------------
