@@ -1,5 +1,6 @@
 ##[locstor.js](locstorjs.com) - A localStorage Helper Library
 -----------------------------------------------------------
+**Supports all modern browsers and IE6+**
 Contents
 --------
 1. [Why locstor.js?](#why-locstor)
@@ -64,7 +65,12 @@ Contents
 	Locstor.set('me', person);
 	Locstor.get('me'); // returns an object
 	```
-	**There's a lot more features than that. Check out the API to read about the rest of them!**
+	
+- **Older Browser Support**
+
+	Older browsers do not natively support HTML5 Local Storage. Locstor.js automatically checks if localStorage is compatible with your current browser. If it detects localStorage is incompatible, the library falls back to cookies. But don't worry, **even with older browsers, locstar.js works exactly the same.**	
+	
+	***There's a lot more features than that. Check out the API to read about the rest of them!***
 
 <a id = 'API'></a>API
 -----------------------------------------
