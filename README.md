@@ -79,9 +79,10 @@ Contents
 **Below you can find the public methods available for use in locstor.js. Please note that this library is a defensive one. Illegal parameters will cause the method to fail instead of attempting to continue and execute. This is by design to avoid unexpected behavior when using localStorage.**
 
 ###Installation
+####Include this line in your .html file
 	<script src = 'locstor.min.js'></script>
 	
-####via bower
+####Or via [bower](http://bower.io/)
 	bower install locstor
 	
 ###Public Methods
