@@ -238,6 +238,7 @@ If you found bugs or ways to improve the source code, or extended the library fo
 	LICENSE	(MIT)
 	locstor.js	(uncompressed and full of comments)
 	locstor.min.js	(minified for production)
+	bower.json (bower package manager configuration)
 	README.md
 	test
 		|_	index.html	(launch to view tests)
