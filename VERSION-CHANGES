@@ -1,3 +1,8 @@
+v1.0.5
+-Moved var ie back outside the getRemainingSpace() method
+-Moved var defaultSize outside the getRemainingSpace() method
+-Implemented a scope wrapper to prevent global namespace pollution
+
 v1.0.4
 -Moved var ie inside getRemainingSpace() method
 -Combined files VERSION and CHANGELOG
