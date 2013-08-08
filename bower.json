@@ -7,6 +7,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "bower.json",
+    "AUTHORS",
+    "LICENSE",
+    "TODO.md"
   ]
 }
