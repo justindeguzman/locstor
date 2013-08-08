@@ -80,6 +80,10 @@ Contents
 
 ###Installation
 	<script src = 'locstor.min.js'></script>
+	
+####via bower
+	bower install locstor
+	
 ###Public Methods
 + [**clear**()](#method-clear)
 + [**contains**(string key)](#method-contains)
