@@ -92,7 +92,7 @@ var Locstor = function Locstor() {};
 
 	// Checks if localStorage contains the specified key
 	Locstor.contains = function contains(key) {
-		if(typeof key != 'string') {
+		if(typeof key !== 'string') {
 			throw new Error('Key must be a string for function contains(key)');
 		}
 
@@ -100,9 +100,9 @@ var Locstor = function Locstor() {};
 	};
 
 	// Returns the value of a specified key in localStorage
-	// The value is converted to the proper type upon retrieval 
+	// The value is converted to the proper type upon retrieval
 	Locstor.get = function get(key) {
-		if(typeof key != 'string') {
+		if(typeof key !== 'string') {
 			throw new Error('Key must be a string for function get(key)');
 		}
 
@@ -128,7 +128,7 @@ var Locstor = function Locstor() {};
 	// Returns an array of keys currently stored in localStorage
 	Locstor.getKeys = function getKeys() {
 		var result = [];
-		
+
 		for(var i = 0; i < localStorage.length; i++) {
 			result.push(localStorage.key(i));
 		}
@@ -145,7 +145,7 @@ var Locstor = function Locstor() {};
 		return ie && ie > 7 ? localStorage.remainingSpace : defaultSize - this.getSize();
 	};
 
-	// Returns the size of the total contents in localStorage 
+	// Returns the size of the total contents in localStorage
 	Locstor.getSize = function getSize() {
 		return JSON.stringify(localStorage).length;
 	};
@@ -158,11 +158,11 @@ var Locstor = function Locstor() {};
 	// Removes the specified key/value pair from localStorage given a key
 	// Optionally takes an array to remove key/value pairs specified in the array
 	Locstor.remove = function remove(key) {
-		if(typeof key == 'string') {
+		if(typeof key === 'string') {
 			localStorage.removeItem(key);
 		} else if(key instanceof Array) {
 			for(var i = 0; i < key.length; i++) {
-				if(typeof key[i] == 'string') {
+				if(typeof key[i] === 'string') {
 					localStorage.removeItem(key[i]);
 				} else {
 					throw new Error('Key in index ' + i + ' is not a string');
@@ -176,9 +176,9 @@ var Locstor = function Locstor() {};
 	// Stores the specified key value pair (allows string, number, boolean, object, array)
 	// If no key and only an object is passed, this function acts as an alias function for store(object)
 	Locstor.set = function set(key, value) {
-		if(arguments.length == 1) {
+		if(arguments.length === 1) {
 			this.store(key);
-		} else if(typeof key == 'string') {
+		} else if(typeof key === 'string') {
 			if(typeof value === 'object') {
 				value = JSON.stringify(value);
 			}
@@ -191,7 +191,7 @@ var Locstor = function Locstor() {};
 
 	// Stores the object in localStorage, allowing access to individual object properties
 	Locstor.store = function store(value) {
-		if(typeof value == 'object' && !(value instanceof Array)) {
+		if(typeof value === 'object' && !(value instanceof Array)) {
 			for(var property in value) {
 				localStorage.setItem(property, value[property]);
 			}
