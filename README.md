@@ -248,7 +248,6 @@ If you found bugs or ways to improve the source code, or extended the library fo
 	test
 		|_	index.html	(launch to view tests)
 			tests.js	(unit tests go here)
-			modules.js	(test configuration)
 			resources	(qunit files)
 				|_	qunit.css
 					qunit.js
