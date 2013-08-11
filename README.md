@@ -195,7 +195,7 @@ Locstor.set('items', ['Health Potion', 'Wand', 'Lobster']);		// Sets an array
 ```
 
 **<a id = 'method-set-alias'></a><u>set( _object o_ )</u>**  
-Alias function for method [store(_object o_)](#method-store)
+Alias function for method [store(object o)](#method-store)
 ```
 See method below.
 ```
