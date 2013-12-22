@@ -1,7 +1,7 @@
 /**
  * Locstor.js is a JavaScript helper library for HTML5 localStorage.
  *
- * v1.0.5
+ * v1.0.6
  *
  * http://locstorjs.com
  *
@@ -101,7 +101,7 @@ var Locstor = function Locstor() {};
 
 	// Returns the value of a specified key in localStorage
 	// The value is converted to the proper type upon retrieval
-	Locstor.get = function get(key) {
+	Locstor.get = function get(key,defaultValue) {
 		if(typeof key !== 'string') {
 			throw new Error('Key must be a string for function get(key)');
 		}
@@ -114,6 +114,8 @@ var Locstor = function Locstor() {};
 		} else if(value.toLowerCase() === 'true' || value.toLowerCase() === 'false') {
 			return value === 'true';	//value was of type boolean
 		} else if(value === 'null') {
+			if(defaultValue)
+				return defaultValue;
 			return null;	// value was null
 		} else {
 			try {
