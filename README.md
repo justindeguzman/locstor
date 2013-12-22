@@ -89,6 +89,7 @@ Contents
 + [**clear**()](#method-clear)
 + [**contains**(string key)](#method-contains)
 + [**get**(string key)](#method-get)
++ [**get**(string key, type defaultValue)](#method-get-default)
 + [**getKeys**()](#method-getkeys)
 + [**getRemainingSpace**()](#method-getspace)
 + [**getSize**()](#method-getsize)
@@ -132,6 +133,15 @@ Locstor.get('age');			// returns a number
 Locstor.get('married');		// returns a boolean
 Locstor.get('children');	// returns an array
 Locstor.get('pet');			// returns an object
+Locstor.get('occupation');	// returns null because key is not set
+```
+
+**<a id = 'method-get'></a><u>get( _string key_, _type defaultValue_ )</u>**  
+Similar to the get( _string key_ ) method except returns a default value if the value retrieved is null
+```
+Locstor.set('notificationsEnabled', true);		// set value of notificationsEnabled to true
+Locstor.get('notificationsEnabled', false);		// returns true because key was previously set to true
+Locstor.get('locationServicesEnabled', false);	// returns false (the default value) because key was not previously set
 ```
 
 **<a id = 'method-getkeys'></a><u>getKeys()</u>**  
