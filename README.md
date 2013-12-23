@@ -31,7 +31,7 @@ Contents
 	var num = Locstor.get('year');
 	console.log(typeof num); // outputs "number"
 	```
-	Now that we retrieved our value back in the proper type, we can perform numeric 	operations on it without converting it or parsing it or worrying about type 		conversion errors. It's not just numbers; booleans, objects, and arrays are supported too.
+	Now that we retrieved our value back in the proper type, we can perform numeric 	operations on it without converting it or parsing it or worrying about type 		conversion errors. It's not just numbers: booleans, objects, and arrays are supported too.
 
 - **Easier Storage and Access**
 	
