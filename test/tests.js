@@ -183,7 +183,7 @@
 	});
 
 	// These unit tests cover both get(string key) and get(string key, type defaultValue)
-	test('get(key)', function() {
+	test('get(key) / get(key, defaultValue)', function() {
 		throws(
 			function() {
 				Locstor.get(98);
