@@ -182,6 +182,7 @@
 		);
 	});
 
+	// These unit tests cover both get(string key) and get(string key, type defaultValue)
 	test('get(key)', function() {
 		throws(
 			function() {
