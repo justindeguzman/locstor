@@ -108,17 +108,15 @@ var Locstor = function Locstor() {};
 		}
 
 		var value = localStorage.getItem(key);	// retrieve value
-		if(arguments.length == 2 && value === null) // If the key is not in local storage and the defaultValue is specified
-			return defaultValue; // the default value is returned.
-			
 		var number = parseFloat(value);	// to allow for number checking
 
-		if(!isNaN(number)) {
+		if(value === null) {
+			// Returns default value if key is not set, otherwise returns null
+			return arguments.length === 2 ? defaultValue : null;
+		} else if(!isNaN(number)) {
 			return number;	// value was of type number
 		} else if(value.toLowerCase() === 'true' || value.toLowerCase() === 'false') {
 			return value === 'true';	//value was of type boolean
-		} else if(value === 'null') {
-			return null;	// value was null
 		} else {
 			try {
 				value = JSON.parse(value);

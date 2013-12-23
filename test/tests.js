@@ -45,10 +45,18 @@
 
 		Locstor.set(person);
 
-		deepEqual(Locstor.get('name'), 'John Smith', '"name" was retrieved from locaLocstortorage');
-		deepEqual(Locstor.get('age'), 27, '"age" was retrieved from locaLocstortorage');
-		deepEqual(Locstor.get('married'), false, '"married" was retrieved from locaLocstortorage');
-		equal(Locstor.get('pet'), {name: 'Spike', species: 'dog'}, '"pet" was retrieved from locaLocstortorage');
+		deepEqual(Locstor.get('name'), 'John Smith', '"name" was retrieved from localStorage');
+		deepEqual(Locstor.get('age'), 27, '"age" was retrieved from localStorage');
+		deepEqual(Locstor.get('married'), false, '"married" was retrieved from localStorage');
+		equal(Locstor.get('pet'), {name: 'Spike', species: 'dog'}, '"pet" was retrieved from localStorage');
+		deepEqual(Locstor.get('location'), null, '"location" retrieved as null from localStorage');
+	});
+
+	test('get(key, defaultValue)', function() {
+		Locstor.set('notificationsEnabled', true);
+		deepEqual(Locstor.get('notificationsEnabled', false), true, '"notificationsEnabled" retrieved as true from localStorage' );
+
+		deepEqual(Locstor.get('locationServicesEnabled', false), false, '"location" retrieved as null from localStorage');
 	});
 
 	test('getKeys()', function() {
