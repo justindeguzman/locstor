@@ -23,7 +23,7 @@ Contents
 	```
 	When we try to retrieve that number, we instead get back a string.
 	```
-	var num =  localStorage['year'];
+	var num = localStorage['year'];
 	console.log(typeof num); // outputs "string"
 	```
 	We can use locstor.js to avoid this unexpected behavior.
@@ -80,7 +80,7 @@ Contents
 
 ###Installation
 ####Include this line in your .html file
-	<script src = 'locstor.min.js'></script>
+	<script src='locstor.min.js'></script>
 	
 ####Or via [bower](http://bower.io/)
 	bower install locstor
