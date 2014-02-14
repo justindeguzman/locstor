@@ -9,7 +9,7 @@
 
 (function() {
   // Clears localStoroage before and after every test
-  var modelOptions = {
+  var moduleOptions = {
     setup: function() {
       Locstor.clear();
     },
@@ -19,7 +19,7 @@
   };
 
   // Module to check if methods execute given correct parameters
-  module('Public Method (Execution)', modelOptions);
+  module('Public Method (Execution)', moduleOptions);
 
   test('clear()', function() {
     Locstor.set('name', 'John Smith');
@@ -150,7 +150,7 @@
   });
 
   // Module to check if methods fail given incorrect parameters
-  module('Public Method (Error Checking)', modelOptions);
+  module('Public Method (Error Checking)', moduleOptions);
 
   test('contains()', function() {
     throws(
