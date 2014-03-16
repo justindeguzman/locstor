@@ -1,3 +1,6 @@
+v1.0.7
+- Added AMD support
+
 v1.0.6
 -Added method get(string key, type defaultValue)
 -Fixed bug with returning null values

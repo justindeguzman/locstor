@@ -1,14 +1,13 @@
 /**
  * Locstor.js is a JavaScript helper library for HTML5 localStorage.
  *
- * v1.0.6
+ * v1.0.7
  *
  * http://locstorjs.com
  *
  * Copyright (c) 2013 Justin de Guzman
  * Released under the MIT license.
  */
-
 
 (function() {
   var Locstor = function Locstor() {};
@@ -21,6 +20,7 @@
 
   // Private Methods
   // ---------------
+
   // IE detection method courtesy of James Padolsey
   // http://james.padolsey.com/javascript/detect-ie-in-js-using-conditional-comments
   var ie = (function(){
@@ -32,6 +32,9 @@
 
     return v > 4 ? v : undef;
   }());
+
+  // Initialization
+  // ---------------
 
   // Inital check to see if localStorage is supported in the browser
   (function() {
@@ -82,6 +85,16 @@
       window.localStorage.length = (document.cookie.match(/\=/g) || window.localStorage).length;
     }
   })();
+
+  // Enable AMD Support
+  if(typeof window.define === "function" && window.define.amd) {
+    window.define("locstor", [], function() {
+      return Locstor;
+    });
+  } else {
+    // Creates the global Locstor object if you aren't using RequireJS, etc.
+    window.Locstor = Locstor;
+  }
 
   // Public Methods
   // --------------
@@ -215,12 +228,4 @@
 
     return o;
   };
-
-  if (typeof window.define === "function" && window.define.amd) {
-    window.define("locstor", [], function() {
-      return Locstor;
-    });
-  } else {
-    window.Locstor = Locstor;
-  }
 })();
