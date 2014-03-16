@@ -9,9 +9,10 @@
  * Released under the MIT license.
  */
 
-var Locstor = function Locstor() {};
 
 (function() {
+  var Locstor = function Locstor() {};
+
   // Private Properties
   // -----------------
 
@@ -214,4 +215,12 @@ var Locstor = function Locstor() {};
 
     return o;
   };
+
+  if (typeof window.define === "function" && window.define.amd) {
+    window.define("locstor", [], function() {
+      return Locstor;
+    });
+  } else {
+    window.Locstor = Locstor;
+  }
 })();
