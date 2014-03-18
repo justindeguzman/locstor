@@ -1,6 +1,6 @@
 {
   "name": "locstor",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "locstor.min.js",
   "ignore": [
     "**/.*",
