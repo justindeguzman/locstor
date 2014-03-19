@@ -16,18 +16,18 @@ Contents
 
 - **Automatic Type Conversions**    
 
-	Let's store a number in localStorage. 
-	```
-	//add number to localStorage
+	Let's store a number in localStorage.
+	```javascript
+	// add number to localStorage
 	localStorage['year'] = 1984;
 	```
 	When we try to retrieve that number, we instead get back a string.
-	```
+	```javascript
 	var num = localStorage['year'];
 	console.log(typeof num); // outputs "string"
 	```
 	We can use locstor.js to avoid this unexpected behavior.
-	```
+	```javascript
 	var num = Locstor.get('year');
 	console.log(typeof num); // outputs "number"
 	```
@@ -39,7 +39,7 @@ Contents
 	
 
 	Let's take our object here...
-	```
+	```javascript
 	var person = {
 		name: 'Justin',
 		location: 'California',
@@ -47,21 +47,21 @@ Contents
 	};
 	```
 	…and store it.
-	```
+	```javascript
 	localStorage['me'] = person;
 	```
 	If we tried to access a property of that object in localStorage, we'd have to 		retrieve it and parse it first.
-	```
+	```javascript
 	var name = localStorage['me'].name; // doesn't work
 	```
 	However, if we used locstor.js, we wouldn't need to worry about doing those steps.
-	```
+	```javascript
 	Locstor.store(person);
 	
 	var name = Locstor.get('name'); // this works
 	```
 	And if you wanted to store the object without separating the properties, we can do 	that too!
-	```
+	```javascript
 	Locstor.set('me', person);
 	Locstor.get('me'); // returns an object
 	```
@@ -80,8 +80,10 @@ Contents
 
 ###Installation
 ####Include this line in your .html file
-	<script src='locstor.min.js'></script>
-	
+```html
+<script src='locstor.min.js'></script>
+```
+
 ####Or via [bower](http://bower.io/)
 	bower install locstor
 	
@@ -103,13 +105,13 @@ Contents
 
 **<a id = 'method-clear'></a><u>clear()</u>**  
 Removes all key / value pairs from localStorage
-```
+```javascript
 Locstor.clear();
 ```
 
 **<a id = 'method-contains'></a><u>contains( _string key_ )</u>**  
 Returns true if localStorage contains the specified key
-```
+```javascript
 Locstor.set('name', 'John Smith');
 Locstor.contains('name');	// returns true
 Locstor.contains('age');	// returns false
@@ -117,7 +119,7 @@ Locstor.contains('age');	// returns false
 
 **<a id = 'method-get'></a><u>get( _string key_ )</u>**  
 Returns the proper-type value of a specified key in localStorage
-```
+```javascript
 var person = {
 	name: 'Adam',
 	age: 28,
@@ -138,7 +140,7 @@ Locstor.get('occupation');	// returns null because key is not set
 
 **<a id = 'method-get'></a><u>get( _string key_, _type defaultValue_ )</u>**  
 Similar to the get( _string key_ ) method except returns a default value if the value retrieved is null
-```
+```javascript
 Locstor.set('notificationsEnabled', true);		// set value of notificationsEnabled to true
 Locstor.get('notificationsEnabled', false);		// returns true because key was previously set to true
 Locstor.get('locationServicesEnabled', false);	// returns false (the default value) because key was not previously set
@@ -146,7 +148,7 @@ Locstor.get('locationServicesEnabled', false);	// returns false (the default val
 
 **<a id = 'method-getkeys'></a><u>getKeys()</u>**  
 Returns an array of keys currently stored in localStorage. The order of the keys is not guaranteed.
-```
+```javascript
 Locstor.set('width', 400);
 Locstor.set('height', 300);
 Locstor.set('color', 'red');
@@ -156,19 +158,19 @@ Locstor.getKeys();	// returns ['width', 'height', 'color']
 
 **<a id = 'method-getspace'></a><u>getRemainingSpace()</u>**  
 Returns an approximation of how much space is left in localStorage
-```
+```javascript
 Locstor.getRemainingSpace();	// returns a number
 ```
 
 **<a id = 'method-getsize'></a><u>getSize()</u>**  
 Returns the size of the total contents in localStorage. 
-```
+```javascript
 Locstor.getSize();	// returns a number
 ```
 
 **<a id = 'method-isempty'></a><u>isEmpty()</u>**  
 Returns true if localStorage has no key/value pairs
-```
+```javascript
 Locstor.set('username', 'locstor_monstor');
 Locstor.isEmpty();	// returns false
 
@@ -178,7 +180,7 @@ Locstor.isEmpty();	// returns true
 
 **<a id = 'method-remove'></a><u>remove( _string key_ )</u>**  
 Removes the specified key/value pair from localStorage given a key
-```
+```javascript
 Locstor.set('distance', 10);
 Locstor.remove('distance');
 Locstor.contains('distance');	// returns false
@@ -186,7 +188,7 @@ Locstor.contains('distance');	// returns false
 
 **<a id = 'method-remove-array'></a><u>remove( _array[]_ )</u>**  
 Removes key/value pairs with keys specified in an array
-```
+```javascript
 Locstor.set('city', 'New York City');
 Locstor.set('state', New York);
 Locstor.set('country', 'United States');
@@ -196,7 +198,7 @@ Locstor.remove(['city', 'state', 'country']);
 
 **<a id = 'method-set'></a><u>set( _string key, type value_ )</u>**  
 Sets the specified key/value pair (allows string, number, boolean, object, array)
-```
+```javascript
 Locstor.set('weapon', 'longsword');								// Sets a string
 Locstor.set('health', 99);										// Sets a number
 Locstor.set('maxLevel', true);									// Sets a boolean
@@ -212,7 +214,7 @@ See method below.
 
 **<a id = 'method-store'></a><u>store( _object o_ )</u>**  
 Stores a given object in localStorage, allowing access to individual object properties
-```
+```javascript
 var person = {
 	name: 'Abraham Lincoln',
 	occupation: 'President',
@@ -228,7 +230,7 @@ Locstor.get('height');		// returns 6
 
 **<a id = 'method-toobject'></a><u>toObject()</u>**  
 Returns an object representation of the current state of localStorage
-```
+```javascript
 Locstor.set('name', 'Justin');
 Locstor.set('eyeColor', 'brown');
 Locstor.set('gender', 'male');
